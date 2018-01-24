@@ -3,7 +3,7 @@
 
 3 dimensional Four in a Row game with computer AI using Monte Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds) applied to trees (UCT in short).
 
-* <em>Start a session in browser on http://omerkel.github.io/FourInARow3D/html5/src/index.html </em>
+* <em>Start a session in browser on http://omerkel.github.io/FourInARow3D/html5/src </em>
 
 
 __Keywords, Categories__ _Two Player, Games/Entertainment, Mobile, JavaScript, ECMAScript_
@@ -16,7 +16,7 @@ First player with four beads of own color in a row wins.
 
 * jQuery: MIT licensed, https://github.com/jquery/jquery
 * jQuery Mobile: MIT licensed, https://github.com/jquery/jquery-mobile
-* Raphaël: MIT licensed, http://www.raphaeljs.com
+* RaphaÃ«l: MIT licensed, http://www.raphaeljs.com
 
 # Contributors / Authors
 
