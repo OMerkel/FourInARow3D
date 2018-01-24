@@ -1,0 +1,22 @@
+{
+  "version": "0.1",
+  "name": "Four in a Row 3D",
+  "description": "Four in a Row 3D board game with optional AI",
+  "launch_path": "/FourInARow3D/html5/src/index.html",
+  "icons": {
+    "16": "/FourInARow3D/html5/src/img/icons/fiar3d16.png",
+    "32": "/FourInARow3D/html5/src/img/icons/fiar3d32.png",
+    "48": "/FourInARow3D/html5/src/img/icons/fiar3d48.png",
+    "60": "/FourInARow3D/html5/src/img/icons/fiar3d60.png",
+    "64": "/FourInARow3D/html5/src/img/icons/fiar3d64.png",
+    "90": "/FourInARow3D/html5/src/img/icons/fiar3d90.png",
+    "120": "/FourInARow3D/html5/src/img/icons/fiar3d120.png",
+    "128": "/FourInARow3D/html5/src/img/icons/fiar3d128.png",
+    "256": "/FourInARow3D/html5/src/img/icons/fiar3d256.png"
+  },
+  "developer": {
+    "name": "Oliver Merkel",
+    "url": "https://github.com/OMerkel/Alquerque"
+  },
+  "installs_allowed_from": ["*"]
+}

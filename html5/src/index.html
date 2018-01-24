@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head profile='http://dublincore.org/documents/dcq-html/'>
+  <link rel='icon' href='img/icons/favicon.ico' type='image/x-icon' />
+  <link rel='schema.DC' href='http://purl.org/dc/elements/1.1/' />
+  <link rel='schema.DCTERMS' href='http://purl.org/dc/terms/' />
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <meta charset='UTF-8' />
+  <meta name='AUTHOR' content='Oliver Merkel' />
+  <meta name='COPYRIGHT' content='Oliver Merkel' />
+  <meta name='DC.creator' content='Oliver Merkel' />
+  <meta name='DC.contributor' content='Oliver Merkel' />
+  <meta name='DC.rights' content="
+See file named LICENSE being part of the repository.
+
+Copyright (c) 2018
+@author Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de.
+All rights reserved.
+
+Logos, brands, and trademarks belong to their respective owners.
+
+All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.
+
+The MIT License (MIT)
+
+Copyright (c) 2018 Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the &quot;Software&quot;), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+If not otherwise stated all graphics (independent of its format) are licensed under
+    http://creativecommons.org/licenses/by-nc-sa/4.0
+    Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+" />
+  <title>Four in a Row 3D</title>
+  <meta name='apple-mobile-web-app-capable' content='yes' />
+  <meta name='apple-mobile-web-app-status-bar-style' content='black' />
+  <link rel='apple-touch-icon' href='img/icons/fiar3d128.png' />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+    name='viewport' />
+  <link rel='stylesheet' type='text/css' href='thirdparty/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css' />
+  <link rel='stylesheet' type='text/css' href='css/index.css' />
+  <script src='thirdparty/jquery-2.2.4.js' type='text/javascript'></script>
+  <script src='thirdparty/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js' type='text/javascript'></script>
+  <script src='thirdparty/raphael-2.2.0/raphael.js' type='text/javascript'></script>
+  <script src='js/hmi.js' type='text/javascript' defer></script>
+</head>
+<body>
+<div data-role='page' data-theme='b' id='game-page' class='mybackground'>
+  <div data-role='header' data-position='fixed'>
+    <center id='myheader'>Four in a Row 3D</center>
+    <a href='#left-panel' id='customMenu' class='customMenu'
+      data-icon='custom' data-iconpos='notext'>Menu</a>
+  </div><!-- /header -->
+  <div role='main' class='mycontent ui-content'>
+    <noscript>
+      <p>This HTML5 application depends on enabled Javascript capabilities in your browser.</p>
+      <p>Please consider enabling Javascript if disabled through settings.</p>
+    </noscript>
+    <center><div id='board'></div></center>
+  </div><!-- /content -->
+  <div data-role='panel' id='left-panel' data-position='left'
+    data-display='overlay' data-theme='b'>
+    <ul data-role='listview' data-theme='b' data-divider-theme='d'
+      data-icon='false' data-global-nav='demos' class='jqm-list'>
+      <li data-icon='back' data-rel='close'><a href='#'>Back</a></li>
+      <li data-role='list-divider'>&nbsp;</li>
+      <li data-icon='star'><a id='new'>New</a></li>
+      <li data-role='list-divider'>&nbsp;</li>
+      <li data-icon='action'><a href='#rules-page' data-rel='page'
+        data-transition='pop'>Rules&#8230;</a></li>
+      <li data-icon='grid'><a href='#options-menu' data-rel='page'
+        data-transition='slideup'>Options&#8230;</a></li>
+      <li data-icon='info'><a href='#about-page' data-rel='page'
+        data-transition='pop'>About&#8230;</a></li>
+    </ul>
+  </div><!-- /panel -->
+</div><!-- /page -->
+<div data-role='page' data-theme='b' id='rules-page'>
+  <div data-role='header'>
+    <a href='#' data-rel='back' id='customBackRules'
+      class='customBack ui-btn ui-icon-custom ui-btn-icon-right ui-btn-icon-notext ui-corner-all'>Back</a>
+    <h4>Rules</h4>
+  </div><!-- /header -->
+  <div role='main' class='ui-content'>
+    <br />
+    <p>There are two opposing players: one is
+      controlling the red beads and the other is controlling
+      the blue beads.</p>
+    <br clear='all' />
+    <h2>Game Board</h2>
+    <p>The Game Board consists of 16 poles in a 4x4 grid of positions.
+	  Each pole is capable to stack a maximum of 4 beads.</p>
+    <br clear='all' />
+    <h2>Game Mechanics</h2>
+    <p>Four in a Row 3D is played in alternating players’ turns. The
+	  player controlling red beads moves first. In a player's turn he
+	  drops one of his beads onto a pole holding less than 4 beads.</p>
+    <p>Passing a turn is not allowed.</p>
+    <h2>Winning Condition</h2>
+    <p>A player wins by forming a row of four own beads in any
+	 horizontal, vertical or even diagonal direction.</p>
+    <br clear='all' />
+    <p>Have fun and enjoy the game&#8230;</p>
+    <a href='#' data-role='button' data-icon='back'
+      data-rel='back'>Back</a>
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role='page' data-theme='b' id='options-menu'>
+  <div data-role='header'>
+    <h1><small>Options</small></h1>
+    <a href='#' data-rel='back' id='customBackOptions'
+      class='customBack ui-btn ui-icon-custom ui-btn-icon-left ui-btn-icon-notext ui-corner-all'>Close</a>
+  </div><!-- /header -->
+  <div data-role='content'>
+    <br />
+    <br />
+    <form>
+      <i>Mind: All selections will be applied on next move or new game.</i>
+      <fieldset data-role='controlgroup'>
+        <legend>Red beads are played by&#8230;</legend>
+        <input name='playerred' id='playerredhuman'
+          checked='checked' type='radio'>
+        <label for='playerredhuman'>Human</label>
+        <input name='playerred' id='playerredai'
+          type='radio'>
+        <label for='playerredai'>AI</label>
+      </fieldset>
+      <fieldset data-role='controlgroup'>
+        <legend>Blue beads are played by&#8230;</legend>
+        <input name='playerblue' id='playerbluehuman'
+          checked='checked' type='radio'>
+        <label for='playerbluehuman'>Human</label>
+        <input name='playerblue' id='playerblueai'
+          type='radio'>
+        <label for='playerblueai'>AI</label>
+      </fieldset>
+    </form>
+    <a href='#' data-role='button' data-icon='check'
+      data-rel='back' data-theme='c'>Ok</a>
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role='page' data-theme='b' id='about-page'>
+  <div data-role='header'>
+    <a href='#' data-rel='back' id='customBackAbout'
+      class='customBack ui-btn ui-icon-custom ui-btn-icon-right ui-btn-icon-notext ui-corner-all'>Back</a>
+    <h4>About Four in a Row 3D</h4>
+  </div><!-- /header -->
+  <div role='main' class='ui-content'>
+    <figure class='author' style='float: right;'>
+      <img src='img/oliver-170707.jpg' />
+      <figcaption>Oliver Merkel, <a rel='license'
+        href='http://creativecommons.org/licenses/by-nc-nd/4.0'
+        target='_blank'>cc-by-nc-nd 4.0</a>.</figcaption>
+    </figure>
+    <br />
+    <h3>Legal</h3>
+    <p>Copyright (c) 2018<br />
+    <b>@author</b> <em>Oliver Merkel</em>, Merkel(dot) Oliver(at) web(dot) de.<br />
+    All rights reserved.<br />
+    Logos, brands, and trademarks belong to their respective owners.</p>
+    <p>All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.</p>
+    <h4>The MIT License (MIT)</h4>
+    <p>Copyright (c) 2018 Oliver Merkel, Merkel(dot) Oliver(at) web(dot)de</p>
+
+    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the &quot;Software&quot;), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+    the Software, and to permit persons to whom the Software is furnished to do so,
+    subject to the following conditions:</p>
+
+    <p>The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.</p>
+
+    <p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+    COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+    <p>If not otherwise stated all graphics (independent of its format) are licensed under
+      <br /><a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0'
+      target='_blank'><img alt='Creative Commons License' style='border-width:0'
+      src='img/icons/cc_by_nc_sa.png' /></a><br />
+      <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0'
+      target='_blank'>Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+      International License</a>.
+    </p>
+
+    <div data-role='collapsible-set' data-theme='c' data-content-theme='d'
+      data-iconpos='right' data-collapsed-icon='arrow-l' data-expanded-icon='arrow-d'>
+    <div data-role='collapsible'>
+      <h4>Four in a Row 3D Principles and Concepts</h4>
+      <p><em>Four in a Row 3D</em> implements a two-player deterministic board game.</p>
+      <p>This Four in a Row 3D is a board game using Monte-Carlo Tree Search (MCTS) with UCB
+        (Upper Confidence Bounds) applied to trees (UCT in short) for the computer
+        player AI. The board game is used for demonstration purposes of the UCT
+        algorithm.</p>
+      <p>The traditional Four in a Row 3D game belongs to the public domain due to its
+        age and unknown author and/or creator.</p>
+    </div><!-- collapsible -->
+    <div data-role='collapsible'>
+      <h4>Third Party Code Licenses</h4>
+      <p>This <b>Four in a Row 3D</b> implementation uses unmodified
+      independent code libraries provided by <em>third parties</em>.
+      Since their licenses might vary the corresponding information is
+      <em>externally linked</em> below. Thus <em>these external links</em>
+      will enable you to reproduce any copyright notice,
+      any related list of conditions, disclaimers, and especially
+      the copyright holders and authors of the corresponding third
+      party functionality.</p>
+      <a href='https://github.com/jquery/jquery' data-role='button' data-theme='c'
+        rel='external' target='_blank' type='text/html'
+        title='jQuery - Repository'>
+        <img src='thirdparty/jquery-favicon.ico' width='16' height='16' />
+        jQuery: MIT</a>
+      <a href='https://github.com/jquery/jquery-mobile' data-role='button' data-theme='c'
+        rel='external' target='_blank' type='text/html'
+        title='jQuery Mobile - Repository'>
+        <img src='thirdparty/jquery.mobile-1.4.5/demos/favicon.ico' width='16' height='16' />
+        jQuery Mobile: MIT</a>
+      <a href='https://github.com/DmitryBaranovskiy/raphael' data-role='button' data-theme='c'
+        rel='external' target='_blank' type='text/html'
+        title='Raphaël - Repository'>
+        <img src='thirdparty/raphael-2.2.0/raphael_logo.png' width='16' height='16' />
+        Raphaël: MIT</a>
+    </div><!-- collapsible -->
+    </div><!-- collapsible-set -->
+    <a href='#' data-role='button' data-icon='back'
+      data-rel='back'>Back</a>
+  </div><!-- /content -->
+</div><!-- /page -->
+</body>
+</html>
