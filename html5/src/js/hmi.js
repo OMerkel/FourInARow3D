@@ -14,8 +14,8 @@
  *
  * @brief Class Hmi.
  * 
- * Class representing the view or Hmi of 3d-Four in a Row.
- * This 3d-Four in a Row board game is used for demonstration of the
+ * Class representing the view or Hmi of Four in a Row 3D.
+ * This Four in a Row 3D board game is used for demonstration of the
  * Monte Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds)
  * applied to trees (UCT in short) for the computer player AI.
  *
@@ -117,9 +117,9 @@ Hmi.prototype.initBoard = function () {
         'l' + (d.x) + ',' + (d.y) +
         'l' + (-e.x) + ',' + (-e.y) + 'z'
       ).attr({ 'stroke-width': '0.01', 'stroke-dasharray': '',
-        stroke: 'gray',
-        fill: '#2f4f2f',
-        opacity: 0.2, x: x, y: y
+        stroke: 'none',
+        fill: 'none',
+        opacity: 0.0, x: x, y: y
       });
       this.tile[x][y].click( this.clickSelect.bind(this) );
     }
@@ -157,7 +157,6 @@ Hmi.prototype.update = function(board, actionInfo) {
   var t = (null == actionInfo) ? null : actionInfo.action;
   for(var x=0; x<4; ++x) {
     for(var y=0; y<4; ++y) {
-      this.tile[x][y].attr({ stroke: 'none', fill: 'none', opacity: 0.0 });
       for(var z=0; z<4; ++z) {
         if((null==t)||(x!=t.x)||(y!=t.y)||(z!=t.z)) {
           this.spheres[x][y][z].attr({
@@ -169,10 +168,6 @@ Hmi.prototype.update = function(board, actionInfo) {
       }
     }
   }
-  for(var n=0; n<board.actions.length; ++n) {
-    var a=board.actions[n];
-    this.tile[a.x][a.y].attr({ stroke: 'gray', fill: '#2f4f2f', opacity: 0.2 });
-  }
   if(actionInfo) {
     console.log('Animate ' + 
       String.fromCharCode(97+t.x) + ( t.y + 1));
@@ -181,7 +176,7 @@ Hmi.prototype.update = function(board, actionInfo) {
     // this.renderStatus(board, actionInfo);
   } else {
     if( board.nextishuman ) {
-      // this.prepareHumanMove();
+      this.prepareHumanMove();
     } else if ( 0 < board.actions.length ) {
       this.requestAiAction();
     }
@@ -210,24 +205,20 @@ Hmi.prototype.animateStep2 = function() {
   animatedSphere.attr({ fill: 'none', stroke: 'none', cy: cy });
   targetSphere.attr({ fill: opponentColor, stroke: 'black' });
   if( this.board.nextishuman ) {
-    // this.prepareHumanMove();
+    this.prepareHumanMove();
   } else if ( 0 < this.board.actions.length ) {
     this.requestAiAction();
   }
 };
 
-/*Hmi.prototype.prepareHumanMove = function () {
-  var showAvailableMove = $('#showavailablemove').is(':checked');
+Hmi.prototype.prepareHumanMove = function () {
   var actions = this.board.actions;
-  for(var i=0; i<actions.length; ++i) {
-    var field = this.field[actions[i].from.x][actions[i].from.y];
-    if(showAvailableMove) {
-      console.log(actions[i].from.x + '' + actions[i].from.y);
-    };
-    field.click( this.clickSelect.bind(this) );
+  for(var n=0; n<actions.length; ++n) {
+    var a=actions[n];
+    this.tile[a.x][a.y].attr({ stroke: 'gray', fill: '#2f4f2f', opacity: 0.2 });
   }
 };
-*/
+
 Hmi.prototype.requestAiAction = function () {
   /* @TODO: disable 'new game' */
   var playerRed = $('#playerredai').is(':checked') ? 'AI' : 'Human';
@@ -237,6 +228,7 @@ Hmi.prototype.requestAiAction = function () {
 };
 
 Hmi.prototype.clickSelect = function ( ev ) {
+  this.deactivateClicks();
   this.selected = {
     x: Math.floor(Number(ev.target.attributes.x.value)),
     y: Math.floor(Number(ev.target.attributes.y.value))
@@ -253,13 +245,10 @@ Hmi.prototype.unbindAllEvents = function ( elem ) {
   /*
    * elem.unclick( this.clickTarget.bind(this) ) not working
    */
-  if (elem.events) {
-    var n = elem.events.length;
-    for(var j=0; j<n; ++j) {
-      elem.events[j].unbind();
+  for(var x=0; x<4; ++x) {
+    for(var y=0; y<4; ++y) {
+      this.tile[x][y].attr({ stroke: 'none', fill: 'none', opacity: 0.0 });
     }
-    delete elem.events;
-    console.log('- unbound ' + n + ' event(s) -');
   }
 };
 
@@ -287,7 +276,11 @@ Hmi.prototype.init = function () {
 };
 
 Hmi.prototype.deactivateClicks = function() {
-  console.log('@TODO: deactivateClicks');
+  for(var x=0; x<4; ++x) {
+    for(var y=0; y<4; ++y) {
+      this.tile[x][y].attr({ stroke: 'none', fill: 'none', opacity: 0.0 });
+    }
+  }
 };
 
 Hmi.prototype.restart = function() {
