@@ -161,6 +161,7 @@ Hmi.prototype.update = function(board, actionInfo) {
         if((null==t)||(x!=t.x)||(y!=t.y)||(z!=t.z)) {
           this.spheres[x][y][z].attr({
             stroke: 2 == board.position[x][y][z] ? 'none' : 'black',
+            'stroke-width': 0.01,
             fill: 2 == board.position[x][y][z] ? 'none' :
               0 == board.position[x][y][z] ? 'red' : 'blue'
           });
@@ -173,7 +174,6 @@ Hmi.prototype.update = function(board, actionInfo) {
       String.fromCharCode(97+t.x) + ( t.y + 1));
     this.animationActionInfo = actionInfo;
     this.animateStep1();
-    // this.renderStatus(board, actionInfo);
   } else {
     if( board.nextishuman ) {
       this.prepareHumanMove();
@@ -208,6 +208,17 @@ Hmi.prototype.animateStep2 = function() {
     this.prepareHumanMove();
   } else if ( 0 < this.board.actions.length ) {
     this.requestAiAction();
+  }
+  if ( 0 == this.board.actions.length ) {
+    if ( 0 < this.board.winning.length ) {
+      for(var n=0; n<this.board.winning.length; ++n) {
+        var w=this.board.winning[n]
+        this.spheres[w.x][w.y][w.z].attr({
+          stroke: 'white',
+          'stroke-width': 0.03
+        });
+      }
+    }
   }
 };
 

@@ -194,6 +194,7 @@ FourInARowBoard.prototype.getState = function () {
     }
   }
   var actions = this.getActions();
+  var winningRow = this.getWinningRow();
   /*
   console.log( this.repr() );
   console.log( 0 == actions ? "Game over. " +
@@ -201,5 +202,5 @@ FourInARowBoard.prototype.getState = function () {
     ( this.active == this.WHITE ? 'White' : 'Black' ) + ' to play.' );
    */
   return { position: field, turn: this.active,
-    actions: actions, previous: this.previousAction };
+    actions: actions, previous: this.previousAction, winning: winningRow };
 };
