@@ -11,7 +11,35 @@ __Keywords, Categories__ _Monte-Carlo-Tree-Search (MCTS), Upper-Confidence-Bound
 
 # Abstract
 
-First player with four beads of own color in a row wins.
+This __Four in a Row 3D__ board game demonstrates the use of the Artificial Intelligence method Monte Carlo Tree Search
+with UCB (Upper Confidence Bounds) applied to trees (UCT in short). Four in a Row 3D is a two player abstract strategy game
+with perfect information. This implementation allows any combination of human players and artificial intelligence players
+as chosen from the options menu.
+
+# Rules
+
+Two players place beads of their own color on a selected pole of their choice during their turn. The game is played in alternating the player's turn between the two players. The player controlling the red beads starts the game. Passing a turn is not allowed.
+
+First player with four beads of own color in a row wins. Building a row can be done in any direction inside the grid of 64 positions in straight line.
+
+<table>
+  <tr>
+    <td><img alt="Blue player wins building a straight diagonal line on third level of the game board as indicated" src="res/Screenshot_1.png" width="50%" /></td>
+    <td><img alt="Menu from upper left corner" src="res/Screenshot_2.png" width="50%" /></td>
+  </tr>
+  <tr>
+    <td>Blue player wins building a straight diagonal line on third level of the game board as indicated</td>
+    <td>Menu from upper left corner</td>
+  </tr>
+  <tr>
+    <td><img alt="Options menu allowing to selected AI player or human player" src="res/Screenshot_3.png" width="50%" /></td>
+    <td><img alt="The grid on top of the poles allows to select where to place your beads" src="res/Screenshot_4.png" width="50%" /></td>
+  </tr>
+  <tr>
+    <td>Options menu allowing to selected AI player or human player</td>
+    <td>The grid on top of the poles allows to select where to place your beads</td>
+  </tr>
+</table>
 
 # 3rd Party Libraries
 
