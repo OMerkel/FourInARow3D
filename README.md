@@ -4,9 +4,10 @@
 3 dimensional Four in a Row game with computer AI using Monte Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds) applied to trees (UCT in short).
 
 * <em>Start a session in browser on http://omerkel.github.io/FourInARow3D/html5/src/ </em>
+* <em>Android APK available for install</em> <img align="top" width="32" src="res/android.gif" /> https://github.com/OMerkel/FourInARow3D/releases/tag/release_0.1
+    * requires minimum Android 4.4.2 (API-19)
 
-
-__Keywords, Categories__ _Two Player, Games/Entertainment, Mobile, JavaScript, ECMAScript_
+__Keywords, Categories__ _Monte-Carlo-Tree-Search (MCTS), Upper-Confidence-Bounds (UCB), UCT, Artificial Intelligence (AI), Board Game, Abstract Game, Perfect Information, 2 Player Strategy Game, Two Player, Games/Entertainment, Mobile, Mobile App, JavaScript, ECMAScript_ 
 
 # Abstract
 
