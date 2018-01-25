@@ -39,6 +39,14 @@ First player with four beads of own color in a row wins. Building a row can be d
     <td>Options menu allowing to selected AI player or human player</td>
     <td>The grid on top of the poles allows to select where to place your beads</td>
   </tr>
+  <tr>
+    <td width="50%"><img alt="My own DIY handcrafted version of Four in a Row 3D. Built approx. back in 1990" src="res/IMG_20180125_195752_687.jpg" width="50%" /></td>
+    <td width="50%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>My own DIY handcrafted version of <b>Four in a Row 3D</b>. Built approx. back in 1990</td>
+    <td>&nbsp;</td>
+  </tr>
 </table>
 
 # 3rd Party Libraries
