@@ -124,6 +124,11 @@ Hmi.prototype.initBoard = function () {
       this.tile[x][y].click( this.clickSelect.bind(this) );
     }
   }
+
+  /* current player */
+  this.currentPlayer = this.paper.circle( 5.7, 5.7, 0.125 ).attr({
+    'stroke-width': 0.01, 'stroke-dasharray': '',
+    stroke: 'black', fill: 'red', opacity: 0.0 });
   this.action = null;
 };
 
@@ -169,6 +174,8 @@ Hmi.prototype.update = function(board, actionInfo) {
       }
     }
   }
+  this.currentPlayer.attr({ opacity: 1.0,
+    fill: 0 == board.turn ? 'red' : 'blue' });
   if(actionInfo) {
     console.log('Animate ' + 
       String.fromCharCode(97+t.x) + ( t.y + 1));
@@ -184,6 +191,9 @@ Hmi.prototype.update = function(board, actionInfo) {
 };
 
 Hmi.prototype.animateStep1 = function() {
+  if ( 0 == this.board.actions.length ) {
+    this.currentPlayer.attr({ opacity: 0.0 });
+  }
   var t = this.animationActionInfo.action,
     opponentColor = 0 == (this.board.turn ^ 1) ? 'red' : 'blue';
   var sphere = this.spheres[t.x][t.y][4];
