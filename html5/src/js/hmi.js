@@ -174,7 +174,8 @@ Hmi.prototype.update = function(board, actionInfo) {
       }
     }
   }
-  this.currentPlayer.attr({ opacity: 1.0,
+  var showCurrentPlayer = $('#indicateCurrentPlayer').is(':checked');
+  this.currentPlayer.attr({ opacity: showCurrentPlayer ? 1.0 : 0.0,
     fill: 0 == board.turn ? 'red' : 'blue' });
   if(actionInfo) {
     console.log('Animate ' + 
