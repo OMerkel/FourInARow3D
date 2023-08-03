@@ -23,36 +23,28 @@ First player with four beads of own color in a row wins. Building a row can be d
 
 <table>
   <tr>
-    <td><img alt="Blue player wins building a straight diagonal line on third level of the game board as indicated" src="res/Screenshot_1.png" width="50%" /></td>
-    <td><img alt="Menu from upper left corner" src="res/Screenshot_2.png" width="50%" /></td>
+    <td><img alt="Red wins on inner cube body diagonal of the game board as indicated" src="res/Screenshot-red wins on inner cube body diagonal.png" width="50%" /></td>
+    <td><img alt="Options menu allowing to selected AI player or human player" src="res/Screenshot-options menu.png" width="50%" /></td>
   </tr>
   <tr>
-    <td>Blue player wins building a straight diagonal line on third level of the game board as indicated</td>
-    <td>Menu from upper left corner</td>
-  </tr>
-  <tr>
-    <td><img alt="Options menu allowing to selected AI player or human player" src="res/Screenshot_3.png" width="50%" /></td>
-    <td><img alt="The grid on top of the poles allows to select where to place your beads" src="res/Screenshot_4.png" width="50%" /></td>
-  </tr>
-  <tr>
+    <td>Red player wins on inner cube body diagonal of the game board as indicated</td>
     <td>Options menu allowing to selected AI player or human player</td>
-    <td>The grid on top of the poles allows to select where to place your beads. Currently active player is indicated in lower right corner</td>
   </tr>
   <tr>
+    <td><img alt="The grid on top of the poles allows to select where to place your beads" src="res/Screenshot-in-game control using grid on top.png" width="50%" /></td>
     <td width="50%"><img alt="My own DIY handcrafted version of Four in a Row 3D. Built approx. back in 1990" src="res/IMG_20180125_195752_687.jpg" width="50%" /></td>
-    <td width="50%">&nbsp;</td>
   </tr>
   <tr>
+    <td>The grid on top of the poles allows to select where to place your beads. Currently active player is indicated in lower right corner</td>
     <td>My own DIY handcrafted version of <b>Four in a Row 3D</b>. Built approx. back in 1990</td>
-    <td>&nbsp;</td>
   </tr>
 </table>
 
 # 3rd Party Libraries
 
 * jQuery: MIT licensed, https://github.com/jquery/jquery
-* jQuery Mobile: MIT licensed, https://github.com/jquery/jquery-mobile
-* Raphaël: MIT licensed, http://www.raphaeljs.com
+* jQuery UI: MIT licensed, https://github.com/jquery/jquery-ui
+* Snap.svg: Apache License V2.0 licensed, https://github.com/adobe-webplatform/Snap.svg
 
 # Contributors / Authors
 
