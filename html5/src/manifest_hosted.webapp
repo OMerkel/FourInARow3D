@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "name": "Four in a Row 3D",
   "description": "Four in a Row 3D board game with optional AI",
   "launch_path": "/FourInARow3D/html5/src/index.html",

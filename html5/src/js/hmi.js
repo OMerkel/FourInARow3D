@@ -5,7 +5,7 @@
  *
  * @section LICENSE
  *
- * Copyright 2018, Oliver Merkel <Merkel(dot)Oliver(at)web(dot)de>
+ * Copyright 2018, 2023 Oliver Merkel <Merkel(dot)Oliver(at)web(dot)de>
  * All rights reserved.
  *
  * Released under the MIT license.
@@ -24,43 +24,19 @@
 function Hmi() {}
 
 Hmi.prototype.resize = function () {
-  var offsetHeight = 64,
-    availableWidth = window.innerWidth - 32,
+  var offsetHeight = 164,
+    offsetWidth = 48,
+    availableWidth = window.innerWidth - offsetWidth,
     availableHeight = window.innerHeight - offsetHeight;
   var size = Math.min(availableWidth, availableHeight);
-  this.paper.setSize( size, size );
+  $('#board').attr({ width: ''+size, height: ''+size });
   var boardMarginTop = (availableHeight - size) / 2;
-  $('#board').css({ 'margin-top': boardMarginTop + 'px' });
-
-  $('#game-page').css({
-    'background-size': 'auto ' + (size/6) + 'px',
-  });
-  var size = size / 10;
-  var minSize = 38;
-  size = size < minSize ? minSize : size;
-  var maxSize = 100;
-  size = maxSize < size ? maxSize : size;
-  $('#customMenu').css({
-    'width': size+'px', 'height': size+'px',
-    'background-size': size+'px ' + size+'px',
-  });
-  $('#customBackRules').css({
-    'width': size+'px', 'height': size+'px',
-    'background-size': size+'px ' + size+'px',
-  });
-  $('#customBackOptions').css({
-    'width': size+'px', 'height': size+'px',
-    'background-size': size+'px ' + size+'px',
-  });
-  $('#customBackAbout').css({
-    'width': size+'px', 'height': size+'px',
-    'background-size': size+'px ' + size+'px',
-  });
+  $('#board').css({ 'margin-top': boardMarginTop + 'px',
+    'margin-bottom': boardMarginTop + 'px' });
 };
 
 Hmi.prototype.initBoard = function () {
-  this.paper = Raphael( 'board', 400, 400);
-  this.paper.setViewBox( 0, 0, 6, 6, false );
+  this.paper = Snap('#board').attr({viewBox: '0 0 6 6' });
   this.paper.rect(0, 0, 6, 6).attr('stroke-width', 0.03);
   var
     a = { x: 1.7, y: 0.00 },
@@ -312,7 +288,6 @@ Hmi.prototype.restart = function() {
 
   this.engine.postMessage({ class: 'request', request: 'restart',
     playerred: playerRed, playerblue: playerBlue });
-  $( '#left-panel' ).panel( 'close' );
 };
 
 Hmi.prototype.engineEventListener = function( eventReceived ) {
