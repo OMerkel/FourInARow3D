@@ -37,7 +37,8 @@ Hmi.prototype.resize = function () {
 
 Hmi.prototype.initBoard = function () {
   this.paper = Snap('#board').attr({viewBox: '0 0 6 6' });
-  this.paper.rect(0, 0, 6, 6).attr('stroke-width', 0.03);
+  this.gradientRed = this.paper.gradient('r(0,0,1.8,0.25,0.25)#f00-#300');
+  this.gradientBlue = this.paper.gradient('r(0,0,1.8,0.25,0.25)#00f-#003');
   var
     a = { x: 1.7, y: 0.00 },
     b = { x: 5.8, y: 1.30 },
@@ -106,6 +107,8 @@ Hmi.prototype.initBoard = function () {
     'stroke-width': 0.01, 'stroke-dasharray': '',
     stroke: 'black', fill: 'red', opacity: 0.0 });
   this.action = null;
+
+  this.paper.rect(0, 0, 6, 6).attr({ 'stroke-width': 0.03, stroke: 'gray', fill: 'none' });
 };
 
 Hmi.prototype.sphere = function ( x, y, z ) {
@@ -144,7 +147,7 @@ Hmi.prototype.update = function(board, actionInfo) {
             stroke: 2 == board.position[x][y][z] ? 'none' : 'black',
             'stroke-width': 0.01,
             fill: 2 == board.position[x][y][z] ? 'none' :
-              0 == board.position[x][y][z] ? 'red' : 'blue'
+              0 == board.position[x][y][z] ? this.gradientRed : this.gradientBlue
           });
         }
       }
@@ -152,7 +155,7 @@ Hmi.prototype.update = function(board, actionInfo) {
   }
   var showCurrentPlayer = $('#indicateCurrentPlayer').is(':checked');
   this.currentPlayer.attr({ opacity: showCurrentPlayer ? 1.0 : 0.0,
-    fill: 0 == board.turn ? 'red' : 'blue' });
+    fill: 0 == board.turn ? this.gradientRed : this.gradientBlue });
   if(actionInfo) {
     console.log('Animate ' + 
       String.fromCharCode(97+t.x) + ( t.y + 1));
@@ -172,20 +175,19 @@ Hmi.prototype.animateStep1 = function() {
     this.currentPlayer.attr({ opacity: 0.0 });
   }
   var t = this.animationActionInfo.action,
-    opponentColor = 0 == (this.board.turn ^ 1) ? 'red' : 'blue';
+    opponentColor = 0 == (this.board.turn ^ 1) ? this.gradientRed : this.gradientBlue;
   var sphere = this.spheres[t.x][t.y][4];
   var cy = this.spherePosition( t.x, t.y, 4 ).y
-  sphere.attr({ fill: 'gray', stroke: 'black', cy: cy });
+  sphere.attr({ fill: opponentColor, stroke: 'black', cy: cy });
   cy = this.spherePosition( t.x, t.y, t.z ).y
   sphere.animate({
     cy: cy,
-    fill: opponentColor
   }, 1000, this.animateStep2.bind(this));
 };
 
 Hmi.prototype.animateStep2 = function() {
   var t = this.animationActionInfo.action,
-    opponentColor = 0 == (this.board.turn ^ 1) ? 'red' : 'blue';
+    opponentColor = 0 == (this.board.turn ^ 1) ? this.gradientRed : this.gradientBlue;
   var animatedSphere = this.spheres[t.x][t.y][4];
   var targetSphere = this.spheres[t.x][t.y][t.z];
   var cy = this.spherePosition( t.x, t.y, 4 ).y
@@ -213,7 +215,7 @@ Hmi.prototype.prepareHumanMove = function () {
   var actions = this.board.actions;
   for(var n=0; n<actions.length; ++n) {
     var a=actions[n];
-    this.tile[a.x][a.y].attr({ stroke: 'gray', fill: '#2f4f2f', opacity: 0.2 });
+    this.tile[a.x][a.y].attr({ stroke: 'gray', fill: '#353', opacity: 0.2 });
   }
 };
 
