@@ -1,7 +1,7 @@
 {
   "name": "io.github.omerkel.fourinarow3d",
   "displayName": "Four in a Row 3D",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Four in a Row 3D game with computer AI player based on MCTS/UCT algorithm.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
